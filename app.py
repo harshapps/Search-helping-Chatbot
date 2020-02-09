@@ -16,8 +16,8 @@ from nltk.stem import WordNetLemmatizer
 nltk.download('popular', quiet=True) # for downloading packages
 
 # uncomment the following only the first time
-nltk.download('punkt') # first-time use only
-nltk.download('wordnet') # first-time use only
+# nltk.download('punkt') # first-time use only
+# nltk.download('wordnet') # first-time use only
 
 
 #Reading in the corpus
@@ -38,7 +38,7 @@ def LemNormalize(text):
 
 
 # Keyword Matching
-GREETING_INPUTS = ("hello", "hi", "greetings", "sup", "what's up","hey","yo")
+GREETING_INPUTS = ("hello", "hi", "greetings", "sup", "what's up","hey","yo", "hey!", "hi!", "yo!", "whats up?", "whats up")
 GREETING_RESPONSES = ["hi", "hey", "*nods*", "hi there", "hello", "I am glad! You are talking to me"]
 
 def greeting(sentence):
@@ -50,7 +50,7 @@ def greeting(sentence):
 
 # Generating response
 def response(user_response):
-    robo_response=''
+    robo_response = ''
     sent_tokens.append(user_response)
     TfidfVec = TfidfVectorizer(tokenizer=LemNormalize, stop_words='english')
     tfidf = TfidfVec.fit_transform(sent_tokens)
